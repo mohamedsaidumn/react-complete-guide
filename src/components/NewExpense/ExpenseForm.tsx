@@ -2,28 +2,44 @@ import React, { SyntheticEvent, useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  //   const [enteredTitle, setEnteredTitle] = useState("");
+  //   const [enteredAmount, setEnteredAmount] = useState("");
+  //   const [enteredDate, setEnteredDate] = useState("");
+
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
 
   const titleChangeHandler = (event: SyntheticEvent): void => {
     //Remember in typescipt event.target is an EventTarget interface
     //Therefore you must cast it to the element to get value
     let target: HTMLInputElement = event.target as HTMLInputElement;
-    setEnteredTitle(target.value);
-    console.log(target.value);
+    // setEnteredTitle(target.value);
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: target.value };
+    });
+    console.log(userInput);
   };
 
   const amountChangeHandler = (event: SyntheticEvent): void => {
     let target: HTMLInputElement = event.target as HTMLInputElement;
-    setEnteredAmount(target.value);
-    console.log(target.value);
+    //setEnteredAmount(target.value);
+    setUserInput((prevState) => {
+      return { ...prevState, enteredAmount: target.value };
+    });
+    console.log(userInput);
   };
 
   const dateChangeHandler = (event: SyntheticEvent): void => {
     let target: HTMLInputElement = event.target as HTMLInputElement;
-    setEnteredDate(target.value);
-    console.log(target.value);
+    //setEnteredDate(target.value);
+    setUserInput((prevState) => {
+      return { ...prevState, enteredDate: target.value };
+    });
+    console.log(userInput);
   };
 
   return (
