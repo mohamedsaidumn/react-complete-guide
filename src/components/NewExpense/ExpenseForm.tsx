@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { FormEvent, SyntheticEvent, useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
@@ -11,19 +11,22 @@ const ExpenseForm = () => {
     //Therefore you must cast it to the element to get value
     let target: HTMLInputElement = event.target as HTMLInputElement;
     setEnteredTitle(target.value);
+    console.log(target.value);
   };
 
   const amountChangeHandler = (event: SyntheticEvent): void => {
     let target: HTMLInputElement = event.target as HTMLInputElement;
     setEnteredAmount(target.value);
+    console.log(target.value);
   };
 
   const dateChangeHandler = (event: SyntheticEvent): void => {
     let target: HTMLInputElement = event.target as HTMLInputElement;
     setEnteredDate(target.value);
+    console.log(target.value);
   };
 
-  const submitHandler = (event: SyntheticEvent): void => {
+  const submitHandler = (event: FormEvent): void => {
     event.preventDefault();
 
     const expenseData = {
@@ -39,7 +42,7 @@ const ExpenseForm = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -71,9 +74,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit" onSubmit={submitHandler}>
-          Add Expense
-        </button>
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
