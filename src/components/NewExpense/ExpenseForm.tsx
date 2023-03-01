@@ -1,7 +1,10 @@
 import React, { FormEvent, SyntheticEvent, useState } from "react";
 import "./ExpenseForm.css";
+import { ExpenseItemType } from "../../config/types";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props: {
+  onSaveExpenseData: (enteredExpenseData: ExpenseItemType) => void;
+}) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -29,13 +32,13 @@ const ExpenseForm = () => {
   const submitHandler = (event: FormEvent): void => {
     event.preventDefault();
 
-    const expenseData = {
+    const expenseData: ExpenseItemType = {
       title: enteredTitle,
-      amount: enteredAmount,
-      date: enteredDate,
+      amount: parseFloat(enteredAmount),
+      date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");

@@ -1,10 +1,10 @@
 import * as React from "react";
-import { expenseItemType } from "./config/types";
+import { ExpenseItemWithIdType } from "./config/types";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
-  const expenses: expenseItemType[] = [
+  const expenses: ExpenseItemWithIdType[] = [
     {
       id: "e1",
       title: "Toilet Paper",
