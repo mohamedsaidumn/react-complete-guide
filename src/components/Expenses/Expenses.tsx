@@ -12,6 +12,7 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
   const listExpenses = expenses.map((expense) => {
     return (
       <ExpenseItem
+        key={expense.id}
         title={expense.title}
         amount={expense.amount}
         date={expense.date}
@@ -19,9 +20,12 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
     );
   });
 
+  const filteredExpensesByYear = listExpenses.filter((expense) => {
+    return expense.props.date.getFullYear().toString() === filteredYear;
+  });
+
   const filterChangeHandler = (selectedYear: string) => {
     setFilteredYear(selectedYear);
-    console.log(selectedYear);
   };
 
   return (
@@ -30,7 +34,7 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {listExpenses}
+      {filteredExpensesByYear}
     </Card>
   );
 };

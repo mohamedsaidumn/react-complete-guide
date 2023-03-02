@@ -8,8 +8,8 @@ const NewExpenses = (props: {
 }) => {
   const saveExpenseDataHandler = (enteredExpenseData: ExpenseItemType) => {
     const expenseData: ExpenseItemWithIdType = {
-      ...enteredExpenseData,
       id: Math.random().toString(),
+      ...enteredExpenseData,
     };
     //console.log(expenseData);
     props.onAddExpense(expenseData);

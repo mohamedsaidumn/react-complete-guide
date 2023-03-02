@@ -35,7 +35,7 @@ const ExpenseForm = (props: {
     const expenseData: ExpenseItemType = {
       title: enteredTitle,
       amount: parseFloat(enteredAmount),
-      date: new Date(enteredDate),
+      date: new Date(enteredDate.replace(/-/g, "/")),
     };
 
     props.onSaveExpenseData(expenseData);

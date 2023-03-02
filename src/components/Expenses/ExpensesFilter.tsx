@@ -8,7 +8,6 @@ const ExpensesFilter = (props: {
 }) => {
   const dropdownChangeHandler = (event: SyntheticEvent) => {
     let target: HTMLSelectElement = event.target as HTMLSelectElement;
-
     props.onChangeFilter(target.value);
   };
 
