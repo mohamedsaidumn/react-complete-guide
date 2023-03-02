@@ -9,6 +9,10 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
   const { expenses } = props;
   const [filteredYear, setFilteredYear] = useState("2020");
 
+  const filterChangeHandler = (selectedYear: string) => {
+    setFilteredYear(selectedYear);
+  };
+
   const listExpenses = expenses.map((expense) => {
     return (
       <ExpenseItem
@@ -24,8 +28,12 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
     return expense.props.date.getFullYear().toString() === filteredYear;
   });
 
-  const filterChangeHandler = (selectedYear: string) => {
-    setFilteredYear(selectedYear);
+  const expensesContent = () => {
+    if (filteredExpensesByYear.length === 0) {
+      return <p>No Expenses Found</p>;
+    } else {
+      return filteredExpensesByYear;
+    }
   };
 
   return (
@@ -34,7 +42,7 @@ const Expenses = (props: { expenses: ExpenseItemWithIdType[] }) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {filteredExpensesByYear}
+      {expensesContent()}
     </Card>
   );
 };
