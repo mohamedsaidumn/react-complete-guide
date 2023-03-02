@@ -26,6 +26,11 @@
   border-color: #510674;
 }
 
+#addNewExpense {
+  flex: row;
+  justify-content: center;
+}
+
 /* .new-expense button.alternative {
   color: #220131;
   border-color: transparent;
