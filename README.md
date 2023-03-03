@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 This is what the architecture looks like
 
-![Alt text](app%20architecture/1react-basics-with-component.png)
+![Alt text](app%20architecture/Screen%20Shot%202023-03-02%20at%207.48.59%20PM.png)![Alt text](app%20architecture/Screen%20Shot%202023-03-02%20at%207.49.28%20PM.png)
